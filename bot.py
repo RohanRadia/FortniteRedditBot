@@ -35,6 +35,7 @@ for comment in subreddit.stream.comments():
                     comment.reply(f"Username|{username}\n-|-|-\nInput Type|{input.title()}\nGamemode|{gamemode.title()}\nWins|{Stats(User(username).id).keyboard.duo.wins}\nKills|{Stats(User(username).id).keyboard.duo.kills}\nWinrate|{format(Stats(User(username).id).keyboard.duo.winrate, '.2f')}%\nKD|{format(Stats(User(username).id).keyboard.duo.kd, '.2f')}")
                 elif gamemode.lower() == 'squads' or gamemode.lower() == 'squad':
                     comment.reply(f"Username|{username}\n-|-|-\nInput Type|{input.title()}\nGamemode|{gamemode.title()}\nWins|{Stats(User(username).id).keyboard.squad.wins}\nKills|{Stats(User(username).id).keyboard.squad.kills}\nWinrate|{format(Stats(User(username).id).keyboard.squad.winrate, '.2f')}%\nKD|{format(Stats(User(username).id).keyboard.squad.kd, '.2f')}")
+                print(f'Retrieved data for {username}')
             elif input.lower() == 'controller':
                 if gamemode.lower() == 'overall':
                     comment.reply(f"Username|{username}\n-|-|-\nInput Type|{input.title()}\nGamemode|{gamemode.title()}\nWins|{Stats(User(username).id).controller.overall.wins}\nKills|{Stats(User(username).id).controller.overall.kills}\nWinrate|{format(Stats(User(username).id).controller.overall.winrate, '.2f')}%\nKD|{format(Stats(User(username).id).controller.overall.kd, '.2f')}")
@@ -44,6 +45,7 @@ for comment in subreddit.stream.comments():
                     comment.reply(f"Username|{username}\n-|-|-\nInput Type|{input.title()}\nGamemode|{gamemode.title()}\nWins|{Stats(User(username).id).controller.duo.wins}\nKills|{Stats(User(username).id).controller.duo.kills}\nWinrate|{format(Stats(User(username).id).controller.duo.winrate, '.2f')}%\nKD|{format(Stats(User(username).id).controller.duo.kd, '.2f')}")
                 elif gamemode.lower() == 'squads' or gamemode.lower() == 'squad':
                     comment.reply(f"Username|{username}\n-|-|-\nInput Type|{input.title()}\nGamemode|{gamemode.title()}\nWins|{Stats(User(username).id).controller.squad.wins}\nKills|{Stats(User(username).id).controller.squad.kills}\nWinrate|{format(Stats(User(username).id).controller.squad.winrate, '.2f')}%\nKD|{format(Stats(User(username).id).controller.squad.kd, '.2f')}")
+                print(f'Retrieved data for {username}')
             elif input.lower() == 'touch':
                 if gamemode.lower() == 'overall':
                     comment.reply(f"Username|{username}\n-|-|-\nInput Type|{input.title()}\nGamemode|{gamemode.title()}\nWins|{Stats(User(username).id).touch.overall.wins}\nKills|{Stats(User(username).id).touch.overall.kills}\nWinrate|{format(Stats(User(username).id).touch.overall.winrate, '.2f')}%\nKD|{format(Stats(User(username).id).touch.overall.kd, '.2f')}")
@@ -55,8 +57,12 @@ for comment in subreddit.stream.comments():
                     comment.reply(f"Username|{username}\n-|-|-\nInput Type|{input.title()}\nGamemode|{gamemode.title()}\nWins|{Stats(User(username).id).touch.squad.wins}\nKills|{Stats(User(username).id).touch.squad.kills}\nWinrate|{format(Stats(User(username).id).touch.squad.winrate, '.2f')}%\nKD|{format(Stats(User(username).id).touch.squad.kd, '.2f')}")
                 else:
                     comment.reply(f"We have hit an error - You have incorrectly entered the gamemode. To see lifetime stats choose `overall` as the gamemode option!\n Command Format: `!fnbot <keyboard/controller/touch> <solo/duo/squad/overall> <username>`\nPlease choose one of the options in each of the `<>` and for the final bracker input your `Fortnite Username`!")
+                print(f'Retrieved data for {username}')
             else:
                 comment.reply(f"We have hit an error - You have incorrectly entered your platform/input device!\n Command Format: `!fnbot <keyboard/controller/touch> <solo/duo/squad/overall> <username>`\nPlease choose one of the options in each of the `<>` and for the final bracker input your `Fortnite Username`!")
         except:
-            comment.reply(f"We have hit an error - this could be caused by many different problems, the most likley is that you have run the command wrong or incorrectly entered the text!\n Command Format: `!fnbot <keyboard/controller/touch> <solo/duo/squad/overall> <username>`\nPlease choose one of the options in each of the `<>` and for the final bracker input your `Fortnite Username`!")
-            print('Error!')
+            try:
+                comment.reply(f"We have hit an error - this could be caused by many different problems, the most likley is that you have run the command wrong or incorrectly entered the text!\n Command Format: `!fnbot <keyboard/controller/touch> <solo/duo/squad/overall> <username>`\nPlease choose one of the options in each of the `<>` and for the final bracker input your `Fortnite Username`!")
+                print('Error!')
+            except:
+                pass
